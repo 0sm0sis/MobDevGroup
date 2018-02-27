@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TerminalCharacter.Views.Battle">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Battle"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout
+                    Grid.Column="0" Grid.Row="0">
+                    <Button Text="Monster Stats"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="StartClick" />
+                    <Button Text="Start Battle!"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="StartClick" 
+                            Grid.Column="0" Grid.Row="0"/>
+                </StackLayout>
+                <Grid
+                    Grid.Column="1" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="HP: 100%"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="0" Grid.Row="0"/>
+                    <Label Text="Image of Monster"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="1" Grid.Row="0"/>
+                    <Label Text="Icons of other monsters remaining"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                           Grid.Column="0" Grid.Row="1"/>
+
+                </Grid>
+                <Grid
+                    Grid.Column="0" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Data.Name}" FontSize="Small"/>
+                    <Label Text="HP: 100%"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="0" Grid.Row="0" />
+                    <Label Text="Image of Player"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="1" Grid.Row="0"/>
+                    <Label Text="Icons of other players alive"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="0" Grid.Row="1"/>
+                </Grid>
+            </Grid>
+            <Label Text="This area for battle notifications and special actions."
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+
+            <Button Text="Attack!"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="StartClick" />
+            <Label Text="Monster Health: "
+                   HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            <Label Text="{Binding MonsterHealth}"
+                   HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
