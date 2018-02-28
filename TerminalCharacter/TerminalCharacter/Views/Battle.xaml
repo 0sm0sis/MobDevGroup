@@ -88,7 +88,7 @@
             <Label Text="Monster Health: "
                    HorizontalOptions="Center"
                     VerticalOptions="Center" />
-            <Label Text="{Binding MonsterHealth}"
+            <Label Text="{Binding myMon1.Stats.DataIntegrity}"
                    HorizontalOptions="Center"
                     VerticalOptions="Center" />
             

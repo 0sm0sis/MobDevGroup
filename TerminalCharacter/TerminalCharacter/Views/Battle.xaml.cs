@@ -36,11 +36,12 @@ namespace TerminalCharacter.Views
             p1.Stats.PhysicalMemory = 10;
             p1.Stats.SystemStatus = CharacterStatus.Alive;
             p1.Stats.UploadBandwidth = 10;
+            players.Add(p1);
 
             myMon1 = new Monster();
             myMon1.Stats = new Attributes();
             myMon1.Level = 2;
-            myMon1.MaxExp = 5;
+            //myMon1.MaxExp = 5;
             myMon1.Name = "Monster";
             myMon1.Stats.DataIntegrity = 100;
             myMon1.Stats.ProcessorSpeed = 3;
@@ -49,15 +50,15 @@ namespace TerminalCharacter.Views
             myMon1.Stats.PhysicalMemory = 10;
             myMon1.Stats.SystemStatus = CharacterStatus.Alive;
             myMon1.Stats.UploadBandwidth = 10;
-            players.Add(p1);
             var MonsterHealth = myMon1.Stats.DataIntegrity;
             InitializeComponent();
 
         }
 
-        async void StartClick(object sender, EventArgs e)
+        void StartClick(object sender, EventArgs e)
         {
-            ctrl.Attack(p1, myMon1);
+            ctrl.BeginBattle(players);
+            var health = myMon1.Stats.OptimalDataIntegrity;
         }
     }
 }

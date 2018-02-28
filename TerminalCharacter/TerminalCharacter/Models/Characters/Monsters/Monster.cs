@@ -13,18 +13,18 @@ namespace TerminalCharacter.Models
         public string Id { get; set; }
 
         // name of the monster
-        public string Name { get; set; }
-        // the description of the monster
-        public string Description { get; set; }
-        // the level of the monster
-        public int Level { get; set; }
+        //public string Name { get; set; }
+        //// the description of the monster
+        //public string Description { get; set; }
+        //// the level of the monster
+        //public int Level { get; set; }
         // specifiy what type the monster is
         public CharacterType MonsterType { get; set; }
 
-        // total amount of experience given
-        public int MaxExp { get; set; }
-        // amount of experience remaining to be given out
-        public int RemainingExp { get; set; }
+        //// total amount of experience given
+        //public int MaxExp { get; set; }
+        //// amount of experience remaining to be given out
+        //public int RemainingExp { get; set; }
 
         // this is the item that will always be dropped by the monster when killed
         [Ignore]
@@ -36,12 +36,6 @@ namespace TerminalCharacter.Models
         public Item UniqueDrop { get; set; }
         // hold a reference to its ID to put in database
         public int UniqueDropId { get; set; }
-
-        // this class holds the attributes of the monster
-        [Ignore]
-        public Attributes Stats { get; set; }
-        // hold a reference to its ID to put in database
-        public int StatsId { get; set; }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

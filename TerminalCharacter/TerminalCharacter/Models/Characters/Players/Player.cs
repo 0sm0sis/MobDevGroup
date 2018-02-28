@@ -22,11 +22,11 @@ namespace TerminalCharacter.Models
         [PrimaryKey]
         public string Id { get; set; }
         // Name of the player
-        public string Name { get; set; }
-        // description of the player
-        public string Description { get; set; }
-        // level of the player
-        public int Level { get; set; }
+        //public string Name { get; set; }
+        //// description of the player
+        //public string Description { get; set; }
+        //// level of the player
+        //public int Level { get; set; }
         // specify what type the character is
         public CharacterType PlayerType { get; set; }
         // how much experince points the player has
@@ -40,7 +40,7 @@ namespace TerminalCharacter.Models
         public Inventory Items { get; set; }
         // this class holds all the player's attributes, hold a reference to its ID to put in database
         [Ignore]
-        public Attributes Stats { get; set; }
+        //public Attributes Stats { get; set; }
         public int StatsID { get; set; }
 
 

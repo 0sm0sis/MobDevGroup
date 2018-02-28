@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 using TerminalCharacter.Services;
 using TerminalCharacter.Models.Characters;
+using TerminalCharacter.Models.Characters.Monsters;
+using TerminalCharacter.Models.Characters.Players;
 using System.Linq;
 
 namespace TerminalCharacter.Models
 {
     public class BattleController
     {
-        private ICharacterController<ICharacter> CharControls { get; set; }
+        PlayerController ControllerPlayer = new PlayerController();
+        MonsterController ControllerMonster = new MonsterController();
+        
 
         static int MAX_MONSTERS = 4;
         // Battle model
-        Battle BattleModel;
+        //Battle BattleModel;
         MockDataStore dbContext;
         
         List<Player> Players;
@@ -27,21 +31,21 @@ namespace TerminalCharacter.Models
 
             // next two lines just basically hack mock data into something that can use linq queries
             Players = players;
-            BattleModel = new Battle {
-                Monsters = GetMonsters(),
-                Players = players,
+            //BattleModel = new Battle {
+            //    Monsters = GetMonsters(),
+            //    Players = players,
 
-            };
-            Monsters = GetMonsters();
+            //};
+            GetMonsters();
             StartNextRound();
         }
 
-        public List<Monster> GetMonsters()
+        public void GetMonsters()
         {
             var myMon1 = new Monster();
             myMon1.Stats = new Attributes();
             myMon1.Level = 2;
-            myMon1.MaxExp = 5;
+            //myMon1.MaxExp = 5;
             myMon1.Name = "Monster";
             myMon1.Stats.DataIntegrity = 100;
             myMon1.Stats.ProcessorSpeed = 3;
@@ -52,7 +56,6 @@ namespace TerminalCharacter.Models
             myMon1.Stats.UploadBandwidth = 10;
             Monsters.Add(myMon1);
 
-            return new List<Monster>();
         }
 
         // Manage beginning of a round
@@ -60,12 +63,14 @@ namespace TerminalCharacter.Models
         {
 
             // calculate turn order
-            int count = 0;
+            int index = 0;
             foreach(Monster mon in Monsters) {
-                OrderList[count] = mon;
+                OrderList[index] = mon;
+                index++;
             }
             foreach (Player p in Players) {
-                OrderList[count] = p;
+                OrderList[index] = p;
+                index++;
             }
             OrderList.OrderByDescending(o => o.Stats.ProcessorSpeed)
                       .OrderByDescending(o => o.Stats.CharacterLevel);
@@ -81,6 +86,7 @@ namespace TerminalCharacter.Models
 
             // figure out target
             var MyTurn = OrderList[currentAttacker];
+            var myType = MyTurn.GetType();
             ICharacter target;
             if(MyTurn.GetType() == typeof(Player)) {
                 target = Monsters.Where(m => m.Stats.SystemStatus == CharacterStatus.Alive).FirstOrDefault();
@@ -90,12 +96,17 @@ namespace TerminalCharacter.Models
             }
             // attack
             Attack(MyTurn, target);
+            // find next character up, or start next round or end game if needed
             var deadMonsters = Monsters.Where(m => m.Stats.SystemStatus == CharacterStatus.Dead).Count();
-            if(deadMonsters < Monsters.Count) {
+            var deadHeroes = Players.Where(p => p.Stats.SystemStatus == CharacterStatus.Dead).Count();
+            if(deadHeroes == Players.Count) {
+                EndGame();
+                return;
+            }
+            if(deadMonsters == Monsters.Count) {
                 currentAttacker++;
                 TurnManager();
             }
-            // find next character up, or start next round or end game if needed
         }
 
         // Attacks, Calculations, Damage
@@ -104,16 +115,12 @@ namespace TerminalCharacter.Models
         // returns true if attack was successful, false otherwise.
         public bool Attack(ICharacter attacker, ICharacter target)
         {
-            if(!CalculateHit(attacker, target))
-            {
-                return false;
-            }
 
             // find damage
             int damage = CalculateDamage(attacker, target);
 
             // apply damage
-            var damReceived = CharControls.TakeDamage(target, damage, 0);
+            int damageTaken = target.TakeDamage(target, damage, 0);
             // apply experience if player attacked
             if(attacker.GetType() == typeof(Player)) {
                 int exp = (int)Math.Ceiling(damage * .01);
@@ -131,9 +138,7 @@ namespace TerminalCharacter.Models
         // Calculate damage
         private int CalculateDamage(ICharacter attacker, ICharacter target)
         {
-            var damOutput = CharControls.BruteForceAttack(attacker);
-           
-            
+            var damOutput = attacker.BruteForceAttack(target);
             return damOutput;
         }
 
