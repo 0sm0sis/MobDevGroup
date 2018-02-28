@@ -40,9 +40,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MonstersDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MonstersViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoreDetailViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BattleViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoresViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Battle.xaml.cs">
-      <DependentUpon>Battle.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\BattlePage.xaml.cs">
+      <DependentUpon>BattlePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml.cs">
@@ -157,7 +158,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Battle.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\BattlePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

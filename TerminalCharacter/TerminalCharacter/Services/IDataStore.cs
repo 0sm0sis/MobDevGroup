@@ -43,6 +43,12 @@ namespace TerminalCharacter.Services
         Task<Score> GetAsync_Score(string id);
         Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false);
 
+        Task<bool> AddAsync_Battle(Battle data);
+        Task<bool> UpdateAsync_Battle(Battle data);
+        Task<bool> DeleteAsync_Battle(Battle data);
+        Task<Battle> GetAsync_Battle(string id);
+        Task<IEnumerable<Battle>> GetAllAsync_Battle(bool forceRefresh = false);
+
     }
         
 }

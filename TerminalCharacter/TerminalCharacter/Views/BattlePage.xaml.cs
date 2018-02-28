@@ -58,7 +58,18 @@ namespace TerminalCharacter.Views
         void StartClick(object sender, EventArgs e)
         {
             ctrl.BeginBattle(players);
-            var health = myMon1.Stats.OptimalDataIntegrity;
+            var health = myMon1.Stats.DataIntegrity.ToString();
+        }
+
+        public void Update(Battle newData)
+        {
+            if (newData == null) {
+                return;
+            }
+
+            // Update all the fields in the Data, except for the Id
+            Name = newData.Name;
+            ScoreTotal = ScoreTotal;
         }
     }
 }
