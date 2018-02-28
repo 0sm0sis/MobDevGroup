@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using Xamarin.Forms;
-using TerminalCharacter.Droid;
+using ServerPost.Droid;
 
 [assembly: Dependency(typeof(FileHelper))]
-namespace TerminalCharacter.Droid
+namespace ServerPost.Droid
 {
     public class FileHelper : IFileHelper
     {

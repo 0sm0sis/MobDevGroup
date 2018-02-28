@@ -11,16 +11,7 @@ namespace TerminalCharacter.Models
     {
         [PrimaryKey]
         public string Id { get; set; }
-
-        // name of the monster
-        //public string Name { get; set; }
-        //// the description of the monster
-        //public string Description { get; set; }
-        //// the level of the monster
-        //public int Level { get; set; }
-        // specifiy what type the monster is
-        public CharacterType MonsterType { get; set; }
-
+        
         //// total amount of experience given
         //public int MaxExp { get; set; }
         //// amount of experience remaining to be given out
@@ -36,6 +27,14 @@ namespace TerminalCharacter.Models
         public Item UniqueDrop { get; set; }
         // hold a reference to its ID to put in database
         public int UniqueDropId { get; set; }
+
+        public Monster()
+        {
+            Name = "New Monster";
+            Description = "A newly created default monster.";
+            PlayerType = CharacterType.Unknown;
+            Stats = new Attributes();
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

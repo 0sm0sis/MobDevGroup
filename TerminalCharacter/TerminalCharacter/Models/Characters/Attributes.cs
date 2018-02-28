@@ -28,5 +28,14 @@ namespace TerminalCharacter.Models.Characters
         public int UploadBandwidth { get; set; }
         // Magic Defense
         public int AntivirusStrength { get; set; }
+
+        public Attributes()
+        {
+            SystemStatus = CharacterStatus.Alive;
+            CharacterLevel = 1;
+            OptimalDataIntegrity = DataIntegrity = 100;
+            ProcessingPower = FireWallStrength = ProcessorSpeed = PhysicalMemory = UploadBandwidth = AntivirusStrength = 10;
+
+        }
     }
 }

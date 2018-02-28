@@ -10,11 +10,9 @@ namespace TerminalCharacter.Models
         // the type of character
         public CharacterType PlayerType;
         // the character.Stats of the character
-        public Attributes Stats = new Attributes();
+        public Attributes Stats;
         // the name of the character
         public String Name;
-        // the level of the character
-        public int Level;
         // the description of the character
         public String Description;
 
@@ -24,7 +22,7 @@ namespace TerminalCharacter.Models
             if (character.Stats.SystemStatus == CharacterStatus.Dead) {
                 return 0;
             }
-            var BaseDamage = Level;
+            var BaseDamage = Stats.CharacterLevel;
             var Scalar = character.Stats.ProcessingPower;
 
             Random rando = new Random();
@@ -69,7 +67,7 @@ namespace TerminalCharacter.Models
 
         public int UseProgram(ICharacter character)
         {
-            var BaseDamage = Level;
+            var BaseDamage = Stats.CharacterLevel;
             var Scalar = character.Stats.UploadBandwidth;
 
 

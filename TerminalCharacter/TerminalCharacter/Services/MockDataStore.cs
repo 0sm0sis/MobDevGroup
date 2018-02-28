@@ -49,12 +49,12 @@ namespace TerminalCharacter.Services
 
             var mockCharacters = new List<Player>
             {
-                new Player { Id = Guid.NewGuid().ToString(), Name = "First Character", Description="This is an Character description.", Level = 1 },
-                new Player { Id = Guid.NewGuid().ToString(), Name = "Second Character", Description="This is an Character description." , Level = 1},
-                new Player { Id = Guid.NewGuid().ToString(), Name = "Third Character", Description="This is an Character description." , Level = 2},
-                new Player { Id = Guid.NewGuid().ToString(), Name = "Fourth Character", Description="This is an Character description." , Level = 2},
-                new Player { Id = Guid.NewGuid().ToString(), Name = "Fifth Character", Description="This is an Character description." , Level = 3},
-                new Player { Id = Guid.NewGuid().ToString(), Name = "Sixth Character", Description="This is an Character description." , Level = 3},
+                new Player { Id = Guid.NewGuid().ToString(), Name = "First Character", Description="This is an Character description."},
+                new Player { Id = Guid.NewGuid().ToString(), Name = "Second Character", Description="This is an Character description."},
+                new Player { Id = Guid.NewGuid().ToString(), Name = "Third Character", Description="This is an Character description."},
+                new Player { Id = Guid.NewGuid().ToString(), Name = "Fourth Character", Description="This is an Character description."},
+                new Player { Id = Guid.NewGuid().ToString(), Name = "Fifth Character", Description="This is an Character description."},
+                new Player { Id = Guid.NewGuid().ToString(), Name = "Sixth Character", Description="This is an Character description."},
             };
 
             foreach (var data in mockCharacters)

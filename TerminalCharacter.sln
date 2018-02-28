@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalCharacter.Android", "TerminalCharacter\TerminalCharacter.Android\TerminalCharacter.Android.csproj", "{3F58E8C7-E78A-4E82-8B19-F189F5617949}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A307DDD4-E186-4EEC-83DB-76CFA265A2A2} = {A307DDD4-E186-4EEC-83DB-76CFA265A2A2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalCharacter.iOS", "TerminalCharacter\TerminalCharacter.iOS\TerminalCharacter.iOS.csproj", "{DD109777-2D70-42DC-8668-B969AF8D37C4}"
 EndProject
