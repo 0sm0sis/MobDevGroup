@@ -27,12 +27,7 @@ namespace TerminalCharacter.Views
         {
             InitializeComponent();
 
-            var data = new Player
-            {
-                Name = "Item 1",
-                Description = "This is an item description.",
-                Level = 1
-            };
+            var data = new Player();
 
             _viewModel = new CharacterDetailViewModel(data);
             BindingContext = _viewModel;

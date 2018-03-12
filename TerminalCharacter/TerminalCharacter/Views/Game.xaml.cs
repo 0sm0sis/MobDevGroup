@@ -38,7 +38,7 @@ namespace TerminalCharacter.Views
         }
         async void OpenBattle(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Battle());
+            await Navigation.PushAsync(new BattlePage());
         }
 
     }

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TerminalCharacter.Views.BattlePage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Battle"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Top Left of grid = characters list-->
+                <StackLayout
+                    Grid.Column="0" Grid.Row="0">
+                    <ListView x:Name="ItemsListView" 
+                         ItemsSource="{Binding CharacterDataset}"
+                         VerticalOptions="FillAndExpand"
+                         HasUnevenRows="true"
+                         RefreshCommand="{Binding LoadItemsCommand}"
+                         IsPullToRefreshEnabled="true"
+                         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                         CachingStrategy="RecycleElement">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10">
+                                        <Label Text="{Binding Name}" 
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="16" />
+
+                                        <!--<Label Text="{Binding Stats.CharacterLevel}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+
+                                        <Label Text="{Binding Stats.DataIntegrity}" 
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="13" />-->
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackLayout>
+
+                <!-- Bottom Right of grid = monsters list -->
+                <StackLayout
+                    Grid.Column="1" Grid.Row="1">
+                    <ListView x:Name="MonstersListView" 
+                         ItemsSource="{Binding MonsterDataset}"
+                         VerticalOptions="FillAndExpand"
+                         HasUnevenRows="true"
+                         RefreshCommand="{Binding LoadItemsCommand}"
+                         IsPullToRefreshEnabled="true"
+                         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                         CachingStrategy="RecycleElement">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10">
+                                        <Label Text="{Binding Name}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                        
+
+                                        <!--<Label Text="{Binding Stats.CharacterLevel}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+
+                                        <Label Text="{Binding Stats.DataIntegrity}" 
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="13" />-->
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <!-- Top Right of grid -->
+                <Grid
+                    Grid.Column="1" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="HP: 100%"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="0" Grid.Row="0"/>
+                    <Label Text="Image of Monster"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="1" Grid.Row="0"/>
+                    <Label Text="Icons of other monsters remaining"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                           Grid.Column="0" Grid.Row="1"/>
+
+                </Grid>
+
+                <!-- Bottom Left of grid -->
+                <Grid
+                    Grid.Column="0" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Data.Name}" FontSize="Small"/>
+                    <Label Text="HP: 100%"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="0" Grid.Row="0" />
+                    <Label Text="Image of Player"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="1" Grid.Row="0"/>
+                    <Label Text="Icons of other players alive"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                           Grid.Column="0" Grid.Row="1"/>
+                </Grid>
+            </Grid>
+
+
+            <Label Text="This area for battle notifications and special actions."
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+
+            <Button Text="Attack!"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="StartClick" />
+            <Label Text="Monster Health: "
+                   HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            <Label Text="{Binding MonsterHealth}"
+                   HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

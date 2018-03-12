@@ -20,42 +20,76 @@ namespace TerminalCharacter.Models
         //Battle BattleModel;
         MockDataStore dbContext;
         
-        List<Player> Players;
-        List<Monster> Monsters = new List<Monster>();
+        public List<Player> Players = new List<Player>();
+        public List<Monster> Monsters = new List<Monster>();
         ICharacter[] OrderList = new ICharacter[5];
         bool gameOver = false;
         int currentAttacker = 0;
+
+        public BattleController()
+        {
+            GetMonsters();
+
+            
+            // since crudi not working rn :(
+            var player1 = new Player();
+            var player2 = new Player();
+            var player3 = new Player();
+            var player4 = new Player();
+            var player5 = new Player();
+            var player6 = new Player();
+            player1.Name = "Player1";
+            player2.Name = "Player2";
+            player3.Name = "Player3";
+            player4.Name = "Player4";
+            player5.Name = "Player5";
+            player6.Name = "Player6";
+            Players.Add(player1);
+            Players.Add(player2);
+            Players.Add(player3);
+            Players.Add(player4);
+            Players.Add(player5);
+            Players.Add(player6);
+        }
+
         // Begin Game with the given players and monsters
         public void BeginBattle(List<Player> players)
         {
 
             // next two lines just basically hack mock data into something that can use linq queries
-            Players = players;
+
+            // crdui not working so temp change here
+            // Players = players;
+
+
             //BattleModel = new Battle {
             //    Monsters = GetMonsters(),
             //    Players = players,
 
             //};
-            GetMonsters();
             StartNextRound();
         }
 
         public void GetMonsters()
         {
             var myMon1 = new Monster();
-            myMon1.Stats = new Attributes();
-            myMon1.Level = 2;
-            //myMon1.MaxExp = 5;
-            myMon1.Name = "Monster";
-            myMon1.Stats.DataIntegrity = 100;
-            myMon1.Stats.ProcessorSpeed = 3;
-            myMon1.Stats.AntivirusStrength = 5;
-            myMon1.Stats.FireWallStrength = 10;
-            myMon1.Stats.PhysicalMemory = 10;
-            myMon1.Stats.SystemStatus = CharacterStatus.Alive;
-            myMon1.Stats.UploadBandwidth = 10;
+            var myMon2 = new Monster();
+            var myMon3 = new Monster();
+            var myMon4 = new Monster();
+            var myMon5 = new Monster();
+            var myMon6 = new Monster();
+            myMon1.Name = "Monster1";
+            myMon2.Name = "Monster2";
+            myMon3.Name = "Monster3";
+            myMon4.Name = "Monster4";
+            myMon5.Name = "Monster5";
+            myMon6.Name = "Monster6";
             Monsters.Add(myMon1);
-
+            Monsters.Add(myMon2);
+            Monsters.Add(myMon3);
+            Monsters.Add(myMon4);
+            Monsters.Add(myMon5);
+            Monsters.Add(myMon6);
         }
 
         // Manage beginning of a round

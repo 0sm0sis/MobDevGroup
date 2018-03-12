@@ -78,9 +78,9 @@ namespace TerminalCharacter.Services
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Item 3", Description = "This is an item description." });
 
 
-            await AddAsync_Character(new Player { Id = Guid.NewGuid().ToString(), Name = "Character 1", Description = "This is an Character description.", Level = 1 });
-            await AddAsync_Character(new Player { Id = Guid.NewGuid().ToString(), Name = "Character 2", Description = "This is an Character description.", Level = 1 });
-            await AddAsync_Character(new Player { Id = Guid.NewGuid().ToString(), Name = "Character 3", Description = "This is an Character description.", Level = 2 });
+            await AddAsync_Character(new Player { Id = Guid.NewGuid().ToString(), Name = "Character 1", Description = "This is an Character description."});
+            await AddAsync_Character(new Player { Id = Guid.NewGuid().ToString(), Name = "Character 2", Description = "This is an Character description."});
+            await AddAsync_Character(new Player { Id = Guid.NewGuid().ToString(), Name = "Character 3", Description = "This is an Character description."});
 
             await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Monster 1", Description = "This is an Monster description." });
             await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Monster 2", Description = "This is an Monster description." });
